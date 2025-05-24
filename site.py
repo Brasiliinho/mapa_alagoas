@@ -1,7 +1,6 @@
 import streamlit as st
 from streamlit_folium import st_folium
 from datetime import datetime
-import pandas as pd
 import io
 from mapa_alagoas import gerar_mapa
 from dados_comex import consulta_comex  
@@ -42,7 +41,7 @@ with st.sidebar:
    
     # Informações adicionais
     st.markdown("---")
-    st.markdown("### 📊 Sobre o Projeto")
+    st.markdown("### Sobre o Projeto")
     st.markdown(
         """
         Visualização interativa dos dados de comércio exterior
@@ -51,7 +50,7 @@ with st.sidebar:
     )
 
 # Título principal
-st.markdown("# 🗺️ Visualização da Exportação × Importação de Alagoas")
+st.markdown("# Visualização da Exportação × Importação de Alagoas")
 
 # Subtítulo com justificativa
 st.markdown(
@@ -62,7 +61,7 @@ st.markdown(
 )
 
 # Seção de Downloads logo após o subtítulo
-st.markdown("### 📥 Downloads")
+st.markdown("### Downloads")
 
 # Botões de download em duas colunas
 download_col1, download_col2 = st.columns(2)
@@ -137,7 +136,7 @@ with map_container:
     map_data = st_folium(
         mapa,
         width=None,  # Usar largura automática (vai ocupar toda a largura disponível)
-        height=700,  # Altura um pouco menor para melhor proporção
+        height=700,
         key="mapa_alagoas"
     )
 

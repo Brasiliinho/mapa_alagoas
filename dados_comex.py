@@ -61,7 +61,7 @@ def consulta_comex(ano_inicio, ano_fim):
         fill_value=0
     ).reset_index()
     
-    # Renomear colunas para o formato final esperado
+    # Renomear as colunas para o formato final esperado
     df_combined_acum.rename(
         columns={'import': 'total_importado', 'export': 'total_exportado'},
         inplace=True

@@ -2,8 +2,6 @@ import json
 import folium
 import requests
 import geopandas as gpd
-import matplotlib.pyplot as plt
-from matplotlib.colors import rgb2hex
 from dados_comex import consulta_comex
 
 def gerar_mapa(ano_inicio, ano_fim):
@@ -21,29 +19,6 @@ def gerar_mapa(ano_inicio, ano_fim):
             fin_leg += f'</svg> {lab}</span>'
         fin_leg += "</span>"
         return fin_leg
-
-    # Função para criar paleta de cores
-    def get_map(name, n):
-        cmap = plt.cm.get_cmap(name, n)
-        res_hex = []
-        for i in range(n):
-            hex = rgb2hex(cmap(i))
-            res_hex.append(hex)
-        return res_hex
-
-    def make_palette(labs, name):
-        hex_map = get_map(name, len(labs))
-        res_map = {l: h for l, h in zip(labs, hex_map)}
-        return res_map
-
-    # Função para criar tabela formatada
-    def format_value(value):
-        if value >= 1_000_000:
-            return f"US$ {value/1_000_000:.2f} milhões"
-        elif value >= 1_000:
-            return f"US$ {value/1_000:.2f} mil"
-        else:
-            return f"US$ {value:.2f}"
 
     # URL GeoJSON dos municípios de Alagoas
     geojson_url = 'https://raw.githubusercontent.com/tbrugz/geodata-br/refs/heads/master/geojson/geojs-27-mun.json'
@@ -79,6 +54,19 @@ def gerar_mapa(ano_inicio, ano_fim):
             return "Equilíbrio"
 
     gdf_merged['categoria_saldo'] = gdf_merged.apply(categorize_balance, axis=1)
+
+    # Formatação de valor
+    def format_value(value):
+        if value >= 1_000_000:
+            return f"US$ {value/1_000_000:.2f} milhões"
+        elif value >= 1_000:
+            return f"US$ {value/1_000:.2f} mil"
+        else:
+            return f"US$ {value:.2f}"
+
+    gdf_merged['importado_fmt'] = gdf_merged['total_importado'].apply(format_value)
+    gdf_merged['exportado_fmt'] = gdf_merged['total_exportado'].apply(format_value)
+    gdf_merged['saldo_fmt'] = gdf_merged['saldo_comercial'].apply(format_value)
 
     # Mapa centrado em Alagoas
     m = folium.Map(
@@ -150,7 +138,7 @@ def gerar_mapa(ano_inicio, ano_fim):
             return 'Alto (>50M-100M)'
         else:
             return 'Muito Alto (>100M)'
-
+    
     # Adicionar categorias aos dados
     gdf_merged['import_cat'] = gdf_merged['total_importado'].apply(import_category)
     gdf_merged['export_cat'] = gdf_merged['total_exportado'].apply(export_category)
@@ -241,8 +229,8 @@ def gerar_mapa(ano_inicio, ano_fim):
         style_function=style_import,
         highlight_function=highlight_function,
         tooltip=folium.GeoJsonTooltip(
-            fields=['municipio', 'total_importado'],
-            aliases=['Município:', 'Importação (US$):'],
+            fields=['municipio', 'importado_fmt'],
+            aliases=['Município:', 'Importação:'],
             localize=True,
             sticky=False,
             labels=True,
@@ -270,8 +258,8 @@ def gerar_mapa(ano_inicio, ano_fim):
         style_function=style_export,
         highlight_function=highlight_function,
         tooltip=folium.GeoJsonTooltip(
-            fields=['municipio', 'total_exportado'],
-            aliases=['Município:', 'Exportação (US$):'],
+            fields=['municipio', 'exportado_fmt'],
+            aliases=['Município:', 'Exportação:'],
             localize=True,
             sticky=False,
             labels=True,
@@ -299,8 +287,8 @@ def gerar_mapa(ano_inicio, ano_fim):
         style_function=style_balance,
         highlight_function=highlight_function,
         tooltip=folium.GeoJsonTooltip(
-            fields=['municipio', 'saldo_comercial', 'categoria_saldo'],
-            aliases=['Município:', 'Saldo (US$):', 'Situação:'],
+            fields=['municipio', 'saldo_fmt', 'categoria_saldo'],
+            aliases=['Município:', 'Saldo:', 'Situação:'],
             localize=True,
             sticky=False,
             labels=True,
