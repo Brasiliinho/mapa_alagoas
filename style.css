@@ -1,0 +1,81 @@
+/* Estilo da logo dentro do controle de camadas */
+.comexstat-logo {
+  display: block;
+  text-align: center;
+  padding: 6px 8px;
+  font-weight: bold;
+  color: #0066cc;
+  font-size: 16px;
+  text-decoration: none;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Estilo ao passar o mouse sobre o link */
+.comexstat-logo:hover {
+  background-color: #f4f4f4;
+}
+
+/* Estilo para dicas de ferramenta (tooltips) */
+.leaflet-tooltip {
+  background-color: white;
+  border: 1px solid #888;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 6px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+/* Coloração alternada para linhas da tabela */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Alinhamento à direita das colunas 2 e 3 */
+td:nth-child(2), td:nth-child(3),
+th:nth-child(2), th:nth-child(3) {
+  text-align: right;
+}
+
+/* Cor de fundo do cabeçalho da tabela */
+th {
+  background-color: #DDDDDD;
+}
+
+/* Remoção de bordas na tabela */
+table {
+  border: none;
+  border-collapse: collapse;
+  width: 250px;
+  border-bottom: none;
+  border-top: none;
+}
+
+/* Remoção de bordas verticais no cabeçalho e nas células */
+table, th, td {
+  border-left: none;
+  border-right: none;
+  border-spacing: 2%;
+}
+
+/* Espaçamento interno das células da tabela */
+th, td {
+  padding: 0% 2% 0% 2%;
+}
+
+/* Estilo da caixa de créditos */
+.credits-box {
+  position: absolute;
+  bottom: 40px;
+  right: 10px;
+  z-index: 999;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
