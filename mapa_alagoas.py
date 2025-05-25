@@ -73,7 +73,8 @@ def gerar_mapa(ano_inicio, ano_fim):
         location=[-9.5713, -36.7820],
         zoom_start=9,
         tiles='cartodbpositron',
-        name='White board'
+        name='White board',
+        control=False,
         control_scale=True
     )
 
@@ -81,7 +82,7 @@ def gerar_mapa(ano_inicio, ano_fim):
     folium.TileLayer(
         tiles='OpenStreetMap',
         name='Street Map',
-        control=True
+        control=False
     ).add_to(m)
 
     # Criar paletas de cores
