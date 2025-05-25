@@ -70,19 +70,24 @@ def gerar_mapa(ano_inicio, ano_fim):
 
     # Mapa centrado em Alagoas
     m = folium.Map(
-        location=[-9.5713, -36.7820],
-        zoom_start=9,
-        tiles='cartodbpositron',
-        name='White board',
-        control=False,
-        control_scale=True
+    location=[-9.5713, -36.7820],
+    zoom_start=9,
+    tiles=None,
+    control_scale=True
     )
 
-    # Adicionar camada OSM
+    # Adiciona o OpenStreetMap como camada base alternativa
     folium.TileLayer(
         tiles='OpenStreetMap',
         name='Street Map',
-        control=False
+        control=True
+    ).add_to(m)
+    
+    # Adiciona o CartoDB Positron como camada base inicial
+    folium.TileLayer(
+        tiles='cartodbpositron',
+        name='White board',
+        control=True
     ).add_to(m)
 
     # Criar paletas de cores

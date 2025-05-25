@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         logoLink.href = 'https://comexstat.mdic.gov.br/pt/home';
         logoLink.target = '_blank';
         logoLink.className = 'comexstat-nome';
-        logoLink.textContent = 'ComexStat';
+        logoLink.textContent = 'Comex Stat';
 
         // Inserir antes do primeiro elemento no controle de camadas
         const controlContainer = document.querySelector('.leaflet-control-layers-base');
