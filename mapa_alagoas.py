@@ -308,10 +308,10 @@ def gerar_mapa(ano_inicio, ano_fim):
     balance_geojson.add_to(balance_group)
     balance_group.add_to(m)
 
-    with open("style.css", "r", encoding="utf-8") as f:
+    with open("custom_style.css", "r", encoding="utf-8") as f:
         m.get_root().header.add_child(folium.Element(f"<style>{f.read()}</style>"))
 
-    with open("logo.js", "r", encoding="utf-8") as f:
+    with open("logo_overlay.js", "r", encoding="utf-8") as f:
         m.get_root().html.add_child(folium.Element(f"<script>{f.read()}</script>"))
 
     # Mudar a posição do controle de camadas para o canto superior direito
