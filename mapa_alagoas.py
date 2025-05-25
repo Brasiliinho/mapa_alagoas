@@ -73,13 +73,14 @@ def gerar_mapa(ano_inicio, ano_fim):
         location=[-9.5713, -36.7820],
         zoom_start=9,
         tiles='cartodbpositron',
+        name='White board'
         control_scale=True
     )
 
     # Adicionar camada OSM
     folium.TileLayer(
         tiles='OpenStreetMap',
-        name='OpenStreetMap',
+        name='Street Map',
         control=True
     ).add_to(m)
 
