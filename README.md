@@ -51,3 +51,10 @@ O **Streamlit impõe restrições de segurança** que impedem a renderização c
 
 Para contornar essa limitação, a aplicação inclui um **botão de download** do mapa em formato **HTML**.  
 O arquivo baixado contém **todas as modificações de estilo e script aplicadas**, permitindo que o usuário visualize o **resultado final completo** ao abrir o arquivo em um navegador.
+
+## Agradecimentos
+
+Gostaria de expressar meus agradecimentos às referências que foram essenciais neste projeto:
+
+- **[Falkzera](https://www.linkedin.com/in/falkzera/)**, cuja explicação me permitiu finalmente compreender a API da Comex.
+- **[Andrew P. Wheeler](https://andrewpwheeler.com/2023/04/25/hacking-folium-for-nicer-legends/)**, por demonstrar de forma clara como realizar configurações no Folium por meio de *code injection*, tornando possível personalizar as legendas de forma mais elegante.

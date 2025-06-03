@@ -19,7 +19,7 @@ with st.sidebar:
     ano_inicio, ano_fim = st.select_slider(
         "Selecione o intervalo de anos:",
         options=list(range(1997, 2025)),
-        value=(2023, 2024),
+        value=(2020, 2024),
         key="intervalo_anos"
     )
    
@@ -120,11 +120,11 @@ with download_col2:
             )
         else:
             st.button("📊 Baixar Dados (CSV)", disabled=True, use_container_width=True)
-            st.caption("⚠️ Nenhum dado disponível para o período")
+            st.caption(" Nenhum dado disponível para o período")
             
     except Exception as e:
         st.button("📊 Baixar Dados (CSV)", disabled=True, use_container_width=True)
-        st.caption(f"❌ Erro: {str(e)}")
+        st.caption(f" Erro: {str(e)}")
 
 # Container para o mapa com largura total
 st.markdown("---")
