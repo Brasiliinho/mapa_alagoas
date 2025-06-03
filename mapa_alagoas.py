@@ -322,6 +322,10 @@ def gerar_mapa(ano_inicio, ano_fim):
         m.get_root().html.add_child(folium.Element(f"<script>{f.read()}</script>"))
 
     # Mudar a posição do controle de camadas para o canto superior direito
-    folium.LayerControl(collapsed=False, position='topright').add_to(m)
+    folium.LayerControl(
+    collapsed=False,
+    position='topright',
+    exclusive_groups=["Importações", "Exportações", "Saldo Comercial"]
+    ).add_to(m)
 
     return m
