@@ -66,7 +66,7 @@ def gerar_mapa(ano_inicio, ano_fim):
 
     gdf_merged['importado_fmt'] = gdf_merged['total_importado'].apply(format_value)
     gdf_merged['exportado_fmt'] = gdf_merged['total_exportado'].apply(format_value)
-    gdf_merged['saldo_fmt'] = gdf_merged['saldo_comercial'].apply(format_value)
+    gdf_merged['saldo_fmt'] = gdf_merged['saldo_comercial'].apply(lambda x: format_value(abs(x)))
 
     # Mapa centrado em Alagoas
     m = folium.Map(
